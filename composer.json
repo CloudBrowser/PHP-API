@@ -1,0 +1,13 @@
+{
+    "name":"cloudbrowser/adapter",
+    "description":"PHP Library to access the APIs provided by cloudbrowser.co",
+    "license": "MIT",
+    "require":{
+        "php":"^5.3.3 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CloudBrowser\\Adapter\\": "src"
+        }
+    }
+}
