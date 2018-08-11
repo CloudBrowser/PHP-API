@@ -2,20 +2,20 @@
 
 namespace CloudBrowser\Adapter\EndPoint;
 
-use CloudBrowser\Adapter\Base;
+use CloudBrowser\Adapter\EndPoint\Base;
 
 class Screenshot extends Base {
-	const END_POINT = '/screenshot';
+	const END_POINT = '/image';
 
 	/**
 	 * Set the payload for the request
 	 * 
-	 * @param string $url the webaddress to capture
+	 * @param string $source the webaddress or HTML to capture
 	 * @param array $options list the query field keys and values      
 	 */
-	public function setPayload($url, $options = []) {
+	public function setPayload($source, $options = []) {
 		$this->payload = [
-			'url' => $url,
+			'source' => $source,
 		];
 
 		$this->payload = $this->payload + $options;

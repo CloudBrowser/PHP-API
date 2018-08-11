@@ -68,10 +68,10 @@ class Base {
 				return 'The command was processed successfully.';
 				break;
 			case self::RESPONSE_UNPROCESSABLE:
-				return 'Well formatted request however some technical issue is preventing the serving of the request, e.g. an unresponsive WHOIS server.';
+				return 'Well formatted request however some technical issue is preventing the serving of the request, e.g. an unresponsive target server.';
 				break;
 			case self::RESPONSE_COMMAND_UNKNOWN:
-				return 'The end-point you have sent the request to is not valid (for example, the end point should be /whois or /screenshot).';
+				return 'The end-point you have sent the request to is not valid (for example, the end point should be /screenshot).';
 				break;
 			case self::RESPONSE_COMMAND_INVALID:
 				return 'The HTTP request method used is not compatible with the selected end-point. This can occur when using POST rather than GET for example.';
