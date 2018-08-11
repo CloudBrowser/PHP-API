@@ -5,7 +5,7 @@ namespace CloudBrowser\Adapter\EndPoint;
 use CloudBrowser\Adapter\EndPoint\Base;
 
 class Pdf extends Base {
-	const END_POINT = '/image';
+	const END_POINT = '/pdf';
 
 	/**
 	 * Set the payload for the request
