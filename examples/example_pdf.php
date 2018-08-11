@@ -2,7 +2,7 @@
 
 require "autoload.php";
 
-use JsonWhois\Adapter\Browser\Screenshot as BrowserScreenshot;
+use CloudBrowser\Adapter\EndPoint\Pdf;
 
 # set key for demo
 define('CLOUDBROWSER_PRIV_KEY', 'REPLACE WITH YOUR KEY HERE');
@@ -11,19 +11,21 @@ define('CLOUDBROWSER_PRIV_KEY', 'REPLACE WITH YOUR KEY HERE');
 define('CLOUDBROWSER_IGNORE_CA', true);
 
 # domain for which to make a screenshot
-$domain = 'google.com';
+$source = 'google.com';
 
-# Create a new instance of BrowserScreenshot
+# Create a new instance of Pdf
 # This is not required with each call, only the first
-$BrowserScreenshot = new BrowserScreenshot(CLOUDBROWSER_PRIV_KEY);
+$Pdf = new Pdf(CLOUDBROWSER_PRIV_KEY);
 
-$width = 1200;
-$height = 900;
-# set the domain for the query
-$BrowserScreenshot->setPayload($domain, $width, $height);
+$options = [
+	'capture_export_format' => 'A5'
+];
+
+# set the source for the query
+$Pdf->setPayload($source, $options);
 
 # Perform the query and store the resulting object 
-$Result = $BrowserScreenshot->run();
+$Result = $Pdf->run();
 
 # check for successful execution
 if (!$Result->isSuccessful()) {
@@ -32,6 +34,7 @@ if (!$Result->isSuccessful()) {
 } else {
 	# get the result of the successful query as an array (default) 
 	$dataArray = $Result->getDataArray();
-	
-	echo '<img src="' . $dataArray['prefix'] . $dataArray['base64'] . '" />';
+	echo '<object width="100%" height="100%" type="application/pdf" data="' . $dataArray['prefix'] . $dataArray['base64'] . '">
+                PDF could not be displayed
+            	</object>';
 }
