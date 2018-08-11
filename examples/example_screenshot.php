@@ -10,8 +10,8 @@ define('CLOUDBROWSER_PRIV_KEY', 'REPLACE WITH YOUR KEY HERE');
 # set to true to ignore TLS errors (use only for testing)
 define('CLOUDBROWSER_IGNORE_CA', true);
 
-# url from which to make a screenshot
-$url = 'google.com';
+# source (URL or base64(HTML)) from which to make a screenshot
+$source = 'google.com';
 
 # Create a new instance of Screenshot
 # This is not required with each call, only the first
@@ -23,8 +23,8 @@ $options = [
 	'capture_full_page' => 2
 ];
 
-# set the url for the query
-$Screenshot->setPayload($url, $options);
+# set the source for the query
+$Screenshot->setPayload($source, $options);
 
 # Perform the query and store the resulting object 
 $Result = $Screenshot->run();
